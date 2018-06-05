@@ -30,7 +30,7 @@ class ExchangeArbitrage(object):
                 print(str(error))
 
     def check_balance(self):
-        self.binance_balance = [10000, 10000] # [float(self.binance.get_balance(self.tokenA)), float(self.binance.get_balance(self.tokenB))]
+        self.binance_balance = [float(self.binance.get_balance(self.tokenA)), float(self.binance.get_balance(self.tokenB))]
         self.theocean_balance = [self.theocean.get_balance(self.tokenA), self.theocean.get_balance(self.tokenB)]
         self.binance.balancetokA = self.binance_balance[0]
         self.binance.balancetokB = self.binance_balance[1]
@@ -50,7 +50,7 @@ class ExchangeArbitrage(object):
         binance_bestask_price = self.binance_orderbook_innermost[1][0]
         binance_bestask_amount = self.binance_orderbook_innermost[1][1]
 
-        # ocean
+        # The Ocean
         self.ocean_orderbook_innermost = self.theocean.get_ticker_orderBook_innermost(self.tokenpair)
         # Binance best bid price & amount
         ocean_bestbid_price = self.ocean_orderbook_innermost[0][0]
@@ -135,5 +135,5 @@ class ExchangeArbitrage(object):
             self.theocean.place_order(self.tokenpair, 'sell', amount, bid)
 
 if __name__ == '__main__':
-    engine = ExchangeArbitrage('ZRXETH', False)
+    engine = ExchangeArbitrage('ZRXETH', True)
     print(engine.start_arbitrage())

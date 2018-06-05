@@ -6,7 +6,7 @@ import time
 import os
 try:
     from urllib import urlencode
-except ImportError:  # for compatibility
+except ImportError:  # for compatibility with py3
     from urllib.parse import urlencode
 
 
@@ -139,17 +139,5 @@ class Exchange:
 
 if __name__ == "__main__":
     binance = Exchange()
-    # print(engine.get_account())
-    # print(binance.get_balance('ETH'))
-    # print(binance.get_user_history('ZRXETH'))
-    # print(binance.get_ticker_order_book('ZRXETH'))
     print(binance.get_ticker_orderBook_innermost('ZRXETH'))
-    # print(pairaddresses[1])
-    # engine.load_key('../../keys/oceanx.key')
-    # print(tokcont.dictionary.get('ZRXETH'))
-    # print(engine.get_user_history())
-    # print(engine.place_order('ZRXETH', 'buy', '10000000000000000000'))
-    # print(engine.get_ticker_lastPrice('ZRXETH'))
-    # for res in grequests.map([engine.get_ticker_lastPrice('BTCUSD')]):
-    #     print res.parsed
-    #     pass
+    ###

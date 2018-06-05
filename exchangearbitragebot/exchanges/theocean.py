@@ -322,22 +322,6 @@ class Exchange:
 
 if __name__ == "__main__":
     ocean = Exchange()
-    # print(ocean.get_user_history())
-    # print(pairaddresses[1])
-    # print(tokcont.dictionary.get('ZRXETH'))
-    # print(ocean.get_user_history())
-    # ocean.cancel_allOrders()
-    # print(ocean.get_ticker_orderBook_innermost('ZRXETH'))
-    # func = TokenContracts.dictionary.get('ZRXETH')
-    # pairaddresses = func()
-    # baseTokenAddress = pairaddresses[0]
-    # quoteTokenAddress = pairaddresses[1]
-    # print(ocean.get_user_history())
-    print(ocean.place_order('ZRXETH', 'buy', '10000000000000000000'))
-    # print(ocean.get_user_history())
-    # print(ocean.get_ticker_lastPrice('ZRXETH'))
-    # print(ocean.get_balance('ZRX'))
-
-    # for res in grequests.map([ocean.get_ticker_lastPrice('BTCUSD')]):
-    #     print res.parsed
-    #     pass
+    print(ocean.get_user_history())
+    print(ocean.get_ticker_orderBook_innermost('ZRXETH'))
+    ###
