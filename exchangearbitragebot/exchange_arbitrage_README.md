@@ -1,4 +1,27 @@
-'''
+# Explanation of Important Methods and Variables in exchange_arbitrage
+
+### ____init____ method
+
+`self.minProfit` should be adjusted by the user based on the tokens being traded and other user preferences
+
+Aside: Empty __init__.py files have been placed in the directories so that the directories containing it can be treated as modules. Constructors and other variables maybe initialized there based on user convenience.
+
+### start_arbitrage method
+
+**Note: The** `testmode` **currently implemented in this method *DOES* carry out trades and is meant for the author's use. The functionality of this mode should be modified by the user to test the program before carrying out trades.**
+
+There are three scenarios that this program currently tackles:
+ - Scenario 1: The highest bid price at Binance is greater than the lowest ask price at The Ocean
+ - Scenario 2: The highest bid price at The Ocean is greater than the lowest ask price at Binance
+ - Scenario 3: No Arbitrage opportunities or insufficient wallet balances
+
+The method calls the check_balance and the check_orderBook methods to determine the scenario and execute trades based on it.
+
+### check_balance method
+
+Returns wallet balances as floats.
+
+```python
 from time import strftime
 from exchanges import binance, theocean
 
@@ -138,4 +161,4 @@ class ExchangeArbitrage(object):
 if __name__ == '__main__':
     engine = ExchangeArbitrage('ZRXETH', True)
     print(engine.start_arbitrage())
-'''
+```
