@@ -27,7 +27,7 @@ To run the Arbitrage Bot, navigate to the `exchangearbitragebot` directory and e
  - BINANCE_API_KEY
  - BINANCE_API_SECRET
 
-## Explanation of Methods and Variables
+## Explanation of Methods and Variables (mini Wiki)
  - [Explanation of exchange_arbitrage.py](../exchangearbitragebot/exchange_arbitrage_README.md)
  - [Explanation of theocean.py](../exchangearbitragebot/exchanges/theocean_README.md)
 
