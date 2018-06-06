@@ -1,4 +1,4 @@
-# Explanation of Important Methods and Variables in exchange_arbitrage
+# Explanation of Important Methods and Variables in exchange_arbitrage.py
 
 This program requires importing of two modules binance.py and theocean.py that contain calls to different API endpoints for posting trades and for attaining information regarding orderBook, account details and user history.
 
@@ -44,6 +44,8 @@ Solving for maxAmt:
 ![equation](http://latex.codecogs.com/gif.latex?maxAmt%20%3D%20%5Cfrac%7BtokBal%7D%7B%281&plus;feeRatio%29%20%5Ctimes%20askPrice%7D)   
 
 For the purposes of this bot, a rudimentary fee model has been used where a fixed `feeRatio` is applied for both the takers and makers. The `feeRatio` variable should be changed to incorporate discounts, gas costs and user defined tolerances for better execution of trades and accurate reflection of returns.
+
+### Snippet of exchange_arbitrage.py
 
 ```python
 from time import strftime
