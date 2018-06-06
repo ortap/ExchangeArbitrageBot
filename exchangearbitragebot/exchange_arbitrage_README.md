@@ -15,7 +15,7 @@ Aside: Empty __init__.py files have been placed in the directories so that the d
 There are three scenarios that this program currently tackles:
  - Scenario 1: The highest bid price at Binance is greater than the lowest ask price at The Ocean
  - Scenario 2: The highest bid price at The Ocean is greater than the lowest ask price at Binance
- - Scenario 3: No Arbitrage opportunities or insufficient wallet balances
+ - Scenario 0: No Arbitrage opportunities or insufficient wallet balances
 
 The method calls the check_balance and the check_orderBook methods to determine the scenario and execute trades based on it.
 
@@ -25,9 +25,25 @@ Returns wallet balances from respective exchanges as floats.
 
 ### check_orderBook method
 
-This method determines the viability of executing trades given information from Binance's and The Ocean's orderbooks and their fees.
+This method determines the viability of executing trades based on information from the two orderbooks (Binance and The Ocean), their fees and maximum amount (`get_max_amount` method) that can be traded.
 
-For the purposes of this bot, a rudimentary fee model has been used where a fixed `feeRatio` is applied for both  the takers and makers. The variable, `feeRatio`, should be changed to incorporate discounts and gas costs for an accurate reflection of profitability.
+Detailed below are the scenarios and corresponding actions determined in this method.
+ - Scenario 1: If the highest bid price at Binance is greater than lowest ask price at Ocean, then buy from Ocean and sell to Binance.
+ - Scenario 2: If the highest bid price at Ocean is greater than lowest ask price at Binance, then buy from Binance and sell to Ocean
+ - Trades are executed only if the fee adjusted return is greater than the user defined `minProfit`
+
+### get_max_amount method
+
+This method returns the maximum amount that can be traded based on wallet balances and fees defined by `feeRatio`(defined in the imported modules).
+For example: The max amount (maxAmt) that can be bought given a token balance (tokBal) can be denoted by the following equation:
+
+![equation](http://latex.codecogs.com/gif.latex?maxAmt%20%5Ctimes%20askPrice%20&plus;%20maxAmt%20%5Ctimes%20askPrice%20%5Ctimes%20feeRatio%20%3D%20tokBal)                                   
+
+Solving for maxAmt:
+
+![equation](http://latex.codecogs.com/gif.latex?maxAmt%20%3D%20%5Cfrac%7BtokBal%7D%7B%281&plus;feeRatio%29%20%5Ctimes%20askPrice%7D)   
+
+For the purposes of this bot, a rudimentary fee model has been used where a fixed `feeRatio` is applied for both the takers and makers. The `feeRatio` variable should be changed to incorporate discounts, gas costs and user defined tolerances for better execution of trades and accurate reflection of returns.
 
 ```python
 from time import strftime
