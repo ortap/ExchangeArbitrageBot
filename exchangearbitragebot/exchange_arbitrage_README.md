@@ -1,5 +1,7 @@
 # Explanation of Important Methods and Variables in exchange_arbitrage
 
+This program requires importing of two modules binance.py and theocean.py that contain calls to different API endpoints for posting trades and for attaining information regarding orderBook, account details and user history.
+
 ### ____init____ method
 
 `self.minProfit` should be adjusted by the user based on the tokens being traded and other user preferences
@@ -19,7 +21,13 @@ The method calls the check_balance and the check_orderBook methods to determine 
 
 ### check_balance method
 
-Returns wallet balances as floats.
+Returns wallet balances from respective exchanges as floats.
+
+### check_orderBook method
+
+This method determines the viability of executing trades given information from Binance's and The Ocean's orderbooks and their fees.
+
+For the purposes of this bot, a rudimentary fee model has been used where a fixed `feeRatio` is applied for both  the takers and makers. The variable, `feeRatio`, should be changed to incorporate discounts and gas costs for an accurate reflection of profitability.
 
 ```python
 from time import strftime
