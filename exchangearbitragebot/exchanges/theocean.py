@@ -1,6 +1,3 @@
-'''
-
-'''
 from web3 import Web3, HTTPProvider
 import json
 import requests
@@ -184,44 +181,6 @@ class Exchange:
         history_request = self.authenticated_request(USER_HISTORY, 'GET', {})
         # print(history_request.text)
 
-    def new_limit_order(self, baseTokenAddress, quoteTokenAddress, side,
-                        orderAmount, price, feeOption='feeInNative'):
-        # -------------------- WORK IN PROGRESS ------------------------
-        # RESERVE_LIMIT_ORDER = self.API_URL + '/limit_order/reserve'
-        # PLACE_LIMIT_ORDER = self.API_URL + '/limit_order/place'
-        # USER_HISTORY = self.API_URL + '/user_history'
-        #
-        # reserve_body = {
-        #     'walletAddress': self.ETHEREUM_ADDRESS.lower(),
-        #     'baseTokenAddress': baseTokenAddress,
-        #     'quoteTokenAddress': quoteTokenAddress,
-        #     'side': side,
-        #     'orderAmount': orderAmount,
-        #     'price': price,
-        #     'feeOption': feeOption
-        # }
-        # # print(reserve_body)
-        # reserve_request = self.authenticated_request(RESERVE_LIMIT_ORDER,
-        #                                              'POST', reserve_body)
-        # # print(reserve_request.text)
-        # signed_order = self.signOrder(
-        #     json.loads(reserve_request.text)['unsignedOrder'])
-        # market_order_ID = json.loads(reserve_request.text)['marketOrderID']
-        #
-        # place_body = {
-        #     'signedTargetOrder':
-        #     'marketOrderID': market_order_ID,
-        #     'signedOrder': signed_order
-        # }
-        #
-        # place_request = self.authenticated_request(PLACE_LIMIT_ORDER, 'POST',
-        #                                            place_body)
-        # # print(place_request.text)
-        #
-        # history_request = self.authenticated_request(USER_HISTORY, 'GET', {})
-        # # print(history_request.text)
-        pass
-
     def place_order(self, tokenpair, side, amount, price=None):
         func = self.TokenContracts.dictionary.get(tokenpair)
         pairaddresses = func()
@@ -299,16 +258,6 @@ class Exchange:
                 'quoteTokenAddress': pairaddresses[1]
             })
         order_book = json.loads(ob_request.text)
-        # Formatting bids and asks
-        # bids = ocean.get_ticker_orderBook('ZRXETH')['bids']
-        # for i in range(len(bids)):
-        #     print([ocean.get_ticker_orderBook('ZRXETH')['bids'][i]['price'],
-        #           ocean.get_ticker_orderBook('ZRXETH')['bids'][i]['availableAmount'], ocean.get_ticker_orderBook('ZRXETH')['bids'][i]['creationTimestamp']])
-        # asks = ocean.get_ticker_orderBook('ZRXETH')['asks']
-        # for i in range(len(asks)):
-        #     print([ocean.get_ticker_orderBook('ZRXETH')['asks'][i]['price'],
-        #           ocean.get_ticker_orderBook('ZRXETH')['asks'][i]['availableAmount'],ocean.get_ticker_orderBook('ZRXETH')['asks'][i]['creationTimestamp']])
-
         return order_book
 
     def get_ticker_orderBook_innermost(self, tokenpair):
