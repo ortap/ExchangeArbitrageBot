@@ -1,4 +1,4 @@
-# Explanation of Important Methods and Variables in exchange_arbitrage.py
+# Explanation of Important Methods and Definitions in exchange_arbitrage.py
 
 This program requires importing of two modules binance.py and theocean.py that contain calls to different API endpoints for posting trades and for attaining information regarding orderBook, account details and user history.
 
