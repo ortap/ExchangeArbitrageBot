@@ -1,6 +1,6 @@
 # Exchange Arbitrage Bot between Binance and The Ocean
 
-This program is a Python implementation of a bot that looks for arbitrage opportunities between Binance and The Ocean and places trades. 
+A Python implementation of a bot that places trades based on arbitrage opportunities between Binance and The Ocean. 
 
 Sample Scenario Functionality:
 For a given token pair, if the lowest ask in exchange A is smaller than the highest bid in exchange B, the bot will buy from exchange A and sell to exchange B.
