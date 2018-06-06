@@ -1,3 +1,23 @@
+# Explanation of Important Methods and Definitions in theocean.py
+
+This module contains two classes: `TokenContracts` and `Exchange`. 
+
+## TokenContracts class
+
+Contains a dictionary of tokens, token pairs and their contract addresses for use by methods within the `Exchange` class.
+
+## Exchange class
+
+Contains methods and definitions for The Ocean exchange that are required for the exchange arbitrage bot.
+
+### ____init____ method
+
+ - `API_URL` may change overtime and should be altered accordingly.
+ - User's `API_KEY`, `API_SECRET` and `ETHEREUM_ADDRESSES` should be stored as environment variables. User may also input these variables directly (less secure).
+ - `feeRatio` is defined here as 0.1% for both makers and takers. This may be altered based on user preference to include Ocean tokens, discounts and user defined tolerances.
+ - a http based `web3` provider (such as parity) is required for getting wallet balances and for signing requests. An alternative signer method/function may be implemented to bypass requirement of a web3 provider.
+
+### Snippet of theocean.py
 ```python
 from web3 import Web3, HTTPProvider
 import json
