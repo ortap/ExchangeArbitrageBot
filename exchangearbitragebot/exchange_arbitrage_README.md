@@ -1,4 +1,53 @@
-'''
+# Explanation of Important Methods and Variables in exchange_arbitrage.py
+
+This program requires importing of two modules binance.py and theocean.py that contain calls to different API endpoints for posting trades and for attaining information regarding orderBook, account details and user history.
+
+### ____init____ method
+
+`self.minProfit` should be adjusted by the user based on the tokens being traded and other user preferences
+
+Aside: Empty __init__.py files have been placed in the directories so that the directories containing it can be treated as modules. Constructors and other variables maybe initialized there based on user convenience.
+
+### start_arbitrage method
+
+**Note: The** `testmode` **currently implemented in this method *DOES* carry out trades and is meant for the author's use. The functionality of this mode should be modified by the user to test the program before carrying out trades.**
+
+There are three scenarios that this program currently tackles:
+ - Scenario 1: The highest bid price at Binance is greater than the lowest ask price at The Ocean
+ - Scenario 2: The highest bid price at The Ocean is greater than the lowest ask price at Binance
+ - Scenario 0: No Arbitrage opportunities or insufficient wallet balances
+
+The method calls the check_balance and the check_orderBook methods to determine the scenario and execute trades based on it.
+
+### check_balance method
+
+Returns wallet balances from respective exchanges as floats.
+
+### check_orderBook method
+
+This method determines the viability of executing trades based on information from the two orderbooks (Binance and The Ocean), their fees and maximum amount (`get_max_amount` method) that can be traded.
+
+Detailed below are the scenarios and corresponding actions determined in this method.
+ - Scenario 1: If the highest bid price at Binance is greater than lowest ask price at Ocean, then buy from Ocean and sell to Binance.
+ - Scenario 2: If the highest bid price at Ocean is greater than lowest ask price at Binance, then buy from Binance and sell to Ocean
+ - Trades are executed only if the fee adjusted return is greater than the user defined `minProfit`
+
+### get_max_amount method
+
+This method returns the maximum amount that can be traded based on wallet balances and fees defined by `feeRatio`(defined in the imported modules).
+For example: The max amount (maxAmt) that can be bought given a token balance (tokBal) can be denoted by the following equation:
+
+![equation](http://latex.codecogs.com/gif.latex?maxAmt%20%5Ctimes%20askPrice%20&plus;%20maxAmt%20%5Ctimes%20askPrice%20%5Ctimes%20feeRatio%20%3D%20tokBal)                                   
+
+Solving for maxAmt:
+
+![equation](http://latex.codecogs.com/gif.latex?maxAmt%20%3D%20%5Cfrac%7BtokBal%7D%7B%281&plus;feeRatio%29%20%5Ctimes%20askPrice%7D)   
+
+For the purposes of this bot, a rudimentary fee model has been used where a fixed `feeRatio` is applied for both the takers and makers. The `feeRatio` variable should be changed to incorporate discounts, gas costs and user defined tolerances for better execution of trades and accurate reflection of returns.
+
+### Snippet of exchange_arbitrage.py
+
+```python
 from time import strftime
 from exchanges import binance, theocean
 
@@ -138,4 +187,4 @@ class ExchangeArbitrage(object):
 if __name__ == '__main__':
     engine = ExchangeArbitrage('ZRXETH', True)
     print(engine.start_arbitrage())
-'''
+```
