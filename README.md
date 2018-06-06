@@ -1,5 +1,5 @@
 # Exchange Arbitrage Bot between Binance and The Ocean
-To install the bot and its dependancies, navigate to the `ExchangeArbitrageBot` directory (note the capitalizations). Then, enter the following command:
+To install the bot and its dependencies, navigate to the `ExchangeArbitrageBot` directory (note the capitalizations). Then, enter the following command:
  ```
  pip install .
  ```
