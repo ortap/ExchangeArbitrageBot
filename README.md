@@ -1,14 +1,24 @@
 # Exchange Arbitrage Bot between Binance and The Ocean
+
+This program is a Python implementation of a bot that looks for arbitrage opportunities between Binance and The Ocean and places trades. 
+
+Sample Scenario Functionality:
+For a given token pair, if the lowest ask in exchange A is smaller than the highest bid in exchange B, the bot will buy from exchange A and sell to exchange B.
+
+## Installation
 To install the bot and its dependencies, navigate to the `ExchangeArbitrageBot` directory (note the capitalizations). Then, enter the following command:
  ```
  pip install .
  ```
+
+Note: Please read the disclaimer, associated read me files and explanation of methods before running the bot.
+
 To run the Arbitrage Bot, navigate to the `exchangearbitragebot` directory and enter the following command:
 ```
  python exchange_arbitrage.py
 ```
 
-# Requirements
+## Requirements
 - Web3 Provider (such as Parity) is needed
 - Required environment variables
  - OCEAN_API_KEY
@@ -17,11 +27,11 @@ To run the Arbitrage Bot, navigate to the `exchangearbitragebot` directory and e
  - BINANCE_API_KEY
  - BINANCE_API_SECRET
 
-# Explanation of Methods and Variables
+## Explanation of Methods and Variables
  - [Explanation of exchange_arbitrage.py](../exchangearbitragebot/exchange_arbitrage_README.md)
  - [Explanation of theocean.py](../exchangearbitragebot/exchanges/theocean_README.md)
 
-# DISCLAIMER
+## DISCLAIMER
 #### USE THE PROGRAM AT YOUR OWN RISK. YOU ARE RESPONSIBLE FOR YOUR OWN MONEY. 
 #### IN NO EVENT SHALL THE AUTHORS OR THEIR AFFILIATES BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE PROGRAM OR THE USE OR OTHER DEALINGS IN THE PROGRAM.
 
