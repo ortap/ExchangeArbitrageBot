@@ -2,6 +2,8 @@
 
 This program requires importing of two modules binance.py and theocean.py that contain calls to different API endpoints for posting trades and for attaining information regarding orderBook, account details and user history.
 
+**Note: This program assumes instantaneous settlement and execution times and does not account for any latency. In reality, there exists latency in both settlement and execution when slippages may occur.**
+
 ### ____init____ method
 
 `self.minProfit` should be adjusted by the user based on the tokens being traded and other user preferences
