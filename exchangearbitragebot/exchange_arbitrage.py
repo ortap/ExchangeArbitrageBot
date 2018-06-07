@@ -3,8 +3,7 @@ from exchanges import binance, theocean
 
 class ExchangeArbitrage(object):
 
-    def __init__(self, tokenpair, testmode=False):
-        self.testmode = testmode
+    def __init__(self, tokenpair):
         self.minProfit = 0.00005  # Vary this based on tokens being traded and personal preferances
         self.tokenpair = tokenpair
         self.tokens = [tokenpair[i:i+3] for i in range(0, len(tokenpair), 3)]
@@ -16,18 +15,15 @@ class ExchangeArbitrage(object):
     def start_arbitrage(self):
         print(strftime('Date: %b %d %Y  Time: %H:%M:%S'))
         print('Starting Exchange Arbitrage between Binance and The Ocean')
-        if self.testmode:
-            print('-----------------------Running in Test Mode-----------------------\n \n')
-        while True:
-            try:
-                if self.check_balance():
-                    arb_scenario = self.check_orderBook()
-                    if arb_scenario['scenario']:
-                        self.place_order(arb_scenario['scenario'], arb_scenario['ask'], arb_scenario['bid'], arb_scenario['amount'] )
-                    else:
-                        print('Arbitrage Scenario:', arb_scenario['scenario'], '-- No arbitrage opportunities or insufficient funds')
-            except Exception as error:
-                print(str(error))
+        try:
+            if self.check_balance():
+                arb_scenario = self.check_orderBook()
+                if arb_scenario['scenario']:
+                    self.place_order(arb_scenario['scenario'], arb_scenario['ask'], arb_scenario['bid'], arb_scenario['amount'] )
+                else:
+                    print('Arbitrage Scenario:', arb_scenario['scenario'], '-- No arbitrage opportunities or insufficient funds')
+        except Exception as error:
+            print(str(error))
 
     def check_balance(self):
         self.binance_balance = [float(self.binance.get_balance(self.tokenA)), float(self.binance.get_balance(self.tokenB))]
