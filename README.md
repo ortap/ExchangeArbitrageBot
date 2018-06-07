@@ -28,8 +28,8 @@ To run the Arbitrage Bot, navigate to the `exchangearbitragebot` directory and e
  - BINANCE_API_SECRET
 
 ## Explanation of Methods and Definitions (mini Wiki)
- - [Explanation of exchange_arbitrage.py](../exchangearbitragebot/exchange_arbitrage_README.md)
- - [Explanation of theocean.py](../exchangearbitragebot/exchanges/theocean_README.md)
+ - [Explanation of exchange_arbitrage.py](../blob/master/exchangearbitragebot/exchange_arbitrage_README.md)
+ - [Explanation of theocean.py](../blob/master//exchangearbitragebot/exchanges/theocean_README.md)
 
 ## DISCLAIMER
 #### USE THE PROGRAM AT YOUR OWN RISK. YOU ARE RESPONSIBLE FOR YOUR OWN MONEY. 
