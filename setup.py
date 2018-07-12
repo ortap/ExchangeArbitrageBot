@@ -10,7 +10,7 @@ setup(name='theocean_python',
       url='https://gitlab.the0cean.net/shailesh/ExchangeArbitrageBot',
       author='Shailesh',
       author_email='shailesh@theocean.trade',
-      license='MIT',
+      license='MPL-2.0',
       packages=['exchangearbitragebot'],
       install_requires=[
           'web3',
